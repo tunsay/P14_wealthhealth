@@ -1,15 +1,46 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import departments from '../../data/departmentList'
 import states from '../../data/statesList'
 import { addEmployee } from '../../services/reducers'
-// import DateLayoutPicker from '../DatePicker/DateLayoutPicker'
+import DateLayoutPicker from '../DatePicker/DateLayoutPicker'
+// import { DateLayoutPicker } from '@tunsay/tunsay_peuimport'
 import SlideMenu from '../SlideMenu/SlideMenu'
 import CustomModal from '../Modal/Modal'
-import { DateLayoutPicker } from 'tunsay_date_picker'
+
 // import mockData from '../../_mock/mock'
 
-// Component
+/**
+ * Form component renders a form to add a new employee.
+ *
+ * @typedef {Object} FormData
+ * @property {string} firstName - The first name of the employee.
+ * @property {string} lastName - The last name of the employee.
+ * @property {Date | null} dateofbirth - The date of birth of the employee.
+ * @property {Date | null} startDate - The start date of employment for the employee.
+ * @property {string} street - The street address of the employee.
+ * @property {string} city - The city where the employee lives.
+ * @property {string} state - The state where the employee lives (selected using a custom 'SlideMenu' component).
+ * @property {string} zipCode - The ZIP code of the employee's address.
+ * @property {string} department - The department where the employee belongs (selected using a custom 'SlideMenu' component).
+ *
+ * @property {FormData} formData - The object containing the form data state.
+ * @property {function} setFormData - The function to update the form data state.
+ * @property {boolean} modalIsOpen - The state of the modal for success message display.
+ * @property {function} setModalIsOpen - The function to update the modal state.
+ * @property {function} handleOpenModal - The function to open the success message modal.
+ * @property {function} handleCloseModal - The function to close the success message modal.
+ * @property {Array} employees - The array containing the list of employees from the Redux store.
+ * @property {function} handleChange - The function to handle form field changes.
+ * @property {function} handleStateChange - The function to handle state selection changes.
+ * @property {function} handleDepartmentChange - The function to handle department selection changes.
+ * @property {function} handleDateChange - The function to handle date of birth changes.
+ * @property {function} handleStartDateChange - The function to handle start date changes.
+ * @property {function} handleSubmit - The function to handle form submission and employee addition.
+ *
+ * @returns {JSX.Element} The JSX element containing the form to add a new employee.
+ */
 export const Form = () => {
   const dispatch = useDispatch()
   const [formData, setFormData] = useState({
@@ -39,8 +70,8 @@ export const Form = () => {
   //   dispatch(addEmployee(mockData))
   // }, [dispatch])
 
-  const { employees } = useSelector((state) => state.user)
-  console.log(employees)
+  // const { employees } = useSelector((state) => state.user)
+  // console.log(employees)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
