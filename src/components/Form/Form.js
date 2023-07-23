@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import departments from '../../data/departmentList'
 import states from '../../data/statesList'
-import SlideMenu from '../SlideMenu/SlideMenu'
 import { addEmployee } from '../../services/reducers'
-import DateLayoutPicker from '../DatePicker/DateLayoutPicker'
+// import DateLayoutPicker from '../DatePicker/DateLayoutPicker'
+import SlideMenu from '../SlideMenu/SlideMenu'
 import CustomModal from '../Modal/Modal'
+import { DateLayoutPicker } from 'tunsay_date_picker'
 // import mockData from '../../_mock/mock'
 
 // Component

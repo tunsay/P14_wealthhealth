@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Table from '../Table/Table'
 import { useMemo } from 'react'
+import Table from '../Table/Table'
 
 export function ListEmployee() {
   const { employees } = useSelector((state) => state.user)
