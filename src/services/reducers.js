@@ -1,29 +1,72 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { configureStore } from '@reduxjs/toolkit'
 
+/**
+ * Redux slice for managing the 'user' state, including the list of employees.
+ *
+ * @typedef {Object} UserState
+ * @property {Array} employees - An array containing the list of employees.
+ *
+ * @typedef {Object} AddEmployeeAction
+ * @property {Object} payload - The data representing the employee to be added.
+ *
+ * @typedef {Object} ReduxSlice
+ * @property {string} name - The name of the Redux slice.
+ * @property {UserState} initialState - The initial state for the reducer.
+ * @property {Object} reducers - An object containing reducer functions to update the state.
+ *
+ * @typedef {Object} ReduxActions
+ * @property {Function} addEmployee - The action function to add an employee to the list.
+ *
+ * @typedef {Object} ReduxStore
+ * @property {Function} user - The Redux reducer function for the 'user' slice.
+ *
+ * @typedef {Object} Store
+ * @property {ReduxStore} reducer - The object containing all the reducers for the store.
+ *
+ * @typedef {Object} StoreInstance
+ * @property {Function} getState - The function to get the current state from the store.
+ * @property {Function} dispatch - The function to dispatch actions to update the state.
+ *
+ * @typedef {Object} ReduxStoreInstance
+ * @property {StoreInstance} store - The instance of the Redux store.
+ *
+ * @typedef {Object} ReduxExports
+ * @property {ReduxActions} actions - The object containing all the actions exported from the slice.
+ *
+ * @typedef {ReduxSlice & ReduxExports} UserSlice
+ *
+ * @type {UserSlice}
+ */
 export const userSlice = createSlice({
+  // The name of the Redux slice
   name: 'user',
-  // initial state for the reducer
+  // The initial state for the reducer
   initialState: {
-    employees: [],
+    employees: [], // Initialize the 'employees' array as an empty array
   },
-  // reducers are functions that take the current state and an action object as arguments, and return a new state
+  // Reducer functions to handle actions and update the state
   reducers: {
-    // login function is used to update the user object in the redux store when the user logs in //
+    /**
+     * Redux action to add an employee to the list of employees.
+     *
+     * @param {UserState} state - The current state of the 'user' slice.
+     * @param {AddEmployeeAction} action - The action object containing the employee data to be added.
+     */
     addEmployee: (state, action) => {
-      // set the user object in the redux store to the user object
+      // Push the new employee data to the 'employees' array in the state
       state.employees.push(action.payload)
     },
   },
 })
-// export the addEmloyee functions
+// Export the 'addEmployee' action function from the Redux slice
 export const { addEmployee } = userSlice.actions
-// export the user object from the redux store
-// export const selectUser = (state) => state.user.user
-// export the userSlice reducer to be used in the redux store
 
 export default userSlice.reducer
-
+/**
+ * Create the Redux store configuration using the 'userSlice.reducer' as the reducer
+ * to manage the 'user' state in the Redux store.
+ */
 export const store = configureStore({
   reducer: {
     user: userSlice.reducer,

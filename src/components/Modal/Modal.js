@@ -1,6 +1,16 @@
 import React from 'react'
 import Modal from 'react-modal'
 
+/**
+ * CustomModal component displays a modal dialog with custom content.
+ *
+ * @typedef {Object} Props
+ * @property {boolean} isOpen - A boolean value indicating whether the modal is open or closed.
+ * @property {function} onClose - The function to close the modal when the close button is clicked.
+ * @property {JSX.Element} content - The JSX element representing the content to be displayed in the modal.
+ *
+ * @returns {JSX.Element} The JSX element containing the custom modal dialog.
+ */
 const CustomModal = ({ isOpen, onClose, content }) => {
   // Vous pouvez également définir un style personnalisé pour le modal ici
   const customStyles = {

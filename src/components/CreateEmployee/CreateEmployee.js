@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom'
-import Form from '../Form/Form'
+import Form from '../Forms/Forms'
 
+/**
+ * CreateEmployee component renders a form to create a new employee.
+ *
+ * @returns {JSX.Element} The JSX element containing the form to create an employee.
+ */
 export function CreateEmployee() {
   return (
-    <html>
+    <span>
       <div class="title">
         <h1>HRnet</h1>
       </div>
@@ -12,6 +17,6 @@ export function CreateEmployee() {
         <h2>Create Employee</h2>
         <Form />
       </div>
-    </html>
+    </span>
   )
 }
