@@ -4,10 +4,9 @@ import { useDispatch } from 'react-redux'
 import departments from '../../data/departmentList'
 import states from '../../data/statesList'
 import { addEmployee } from '../../services/reducers'
-import DateLayoutPicker from '../DatePicker/DateLayoutPicker'
-// import { DateLayoutPicker } from '@tunsay/tunsay_peuimport'
 import SlideMenu from '../SlideMenu/SlideMenu'
 import CustomModal from '../Modal/Modal'
+import { DateLayoutPicker } from 'tunsay-datepicker-package'
 
 // import mockData from '../../_mock/mock'
 
@@ -146,6 +145,11 @@ export const Form = () => {
       </div>
       <div>
         <label htmlFor="startDate">Start Date:</label>
+        {/* <DateLayoutPicker
+          name="startDate"
+          selected={formData.startDate}
+          onChange={handleStartDateChange}
+        /> */}
         <DateLayoutPicker
           name="startDate"
           selected={formData.startDate}
