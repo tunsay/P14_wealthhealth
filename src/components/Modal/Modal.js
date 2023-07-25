@@ -27,6 +27,7 @@ const CustomModal = ({ isOpen, onClose, content }) => {
       onRequestClose={onClose}
       contentLabel="Example Modal"
       style={customStyles} // Utilisez le style personnalisé ici
+      ariaHideApp={false}
     >
       <button onClick={onClose}>Fermer le modal</button>
       {content}
