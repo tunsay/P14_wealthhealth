@@ -9,10 +9,10 @@ import Form from '../Forms/Forms'
 export function CreateEmployee() {
   return (
     <span>
-      <div class="title">
+      <div className="title">
         <h1>HRnet</h1>
       </div>
-      <div class="container">
+      <div className="container">
         <Link to={'/list'}>View Current Employees</Link>
         <h2>Create Employee</h2>
         <Form />
