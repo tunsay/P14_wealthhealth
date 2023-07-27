@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: components/CreateEmployee/CreateEmployee.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,40 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: components/CreateEmployee/CreateEmployee.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Link } from 'react-router-dom'
+import Form from '../Forms/Forms'
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * CreateEmployee component renders a form to create a new employee.
+ *
+ * @returns {JSX.Element} The JSX element containing the form to create an employee.
+ */
+export function CreateEmployee() {
+  return (
+    &lt;span>
+      &lt;div className="title">
+        &lt;h1>HRnet&lt;/h1>
+      &lt;/div>
+      &lt;div className="container">
+        &lt;Link to={'/list'}>View Current Employees&lt;/Link>
+        &lt;h2>Create Employee&lt;/h2>
+        &lt;Form />
+      &lt;/div>
+    &lt;/span>
+  )
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

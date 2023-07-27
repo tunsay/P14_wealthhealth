@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Forms/Forms.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Forms/Forms.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//import React component
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
+import departments from '../../data/departmentList'
+import states from '../../data/statesList'
+import { addEmployee } from '../../services/reducers'
+import SlideMenu from '../SlideMenu/SlideMenu'
+import CustomModal from '../Modal/Modal'
+//Import my own Package component
+import { DateLayoutPicker } from 'tunsay-datepicker-package'
+
+//Import the mock data
+import mockData from '../../_mock/mock'
+
+/**
+ * Form component renders a form to add a new employee.
+ *
+ * @typedef {Object} FormData
+ * @property {string} firstName - The first name of the employee.
+ * @property {string} lastName - The last name of the employee.
+ * @property {Date | null} dateofbirth - The date of birth of the employee.
+ * @property {Date | null} startDate - The start date of employment for the employee.
+ * @property {string} street - The street address of the employee.
+ * @property {string} city - The city where the employee lives.
+ * @property {string} state - The state where the employee lives (selected using a custom 'SlideMenu' component).
+ * @property {string} zipCode - The ZIP code of the employee's address.
+ * @property {string} department - The department where the employee belongs (selected using a custom 'SlideMenu' component).
+ *
+ * @property {FormData} formData - The object containing the form data state.
+ * @property {function} setFormData - The function to update the form data state.
+ * @property {boolean} modalIsOpen - The state of the modal for success message display.
+ * @property {function} setModalIsOpen - The function to update the modal state.
+ * @property {function} handleOpenModal - The function to open the success message modal.
+ * @property {function} handleCloseModal - The function to close the success message modal.
+ * @property {Array} employees - The array containing the list of employees from the Redux store.
+ * @property {function} handleChange - The function to handle form field changes.
+ * @property {function} handleStateChange - The function to handle state selection changes.
+ * @property {function} handleDepartmentChange - The function to handle department selection changes.
+ * @property {function} handleDateChange - The function to handle date of birth changes.
+ * @property {function} handleStartDateChange - The function to handle start date changes.
+ * @property {function} handleSubmit - The function to handle form submission and employee addition.
+ * @property {function} addMock - The function to add mock data.
+ *
+ * @returns {JSX.Element} The JSX element containing the form to add a new employee.
+ */
+export const Form = () => {
+  const dispatch = useDispatch()
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    dateofbirth: null,
+    startDate: null,
+    street: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    department: '',
+  })
+
+  //The state of the modal for success message and other function to update the modal state.
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+
+  // The function to open the success message modal.
+  const handleOpenModal = () => {
+    setModalIsOpen(true)
+  }
+
+  // The function to close the success message modal.
+  const handleCloseModal = () => {
+    setModalIsOpen(false)
+  }
+
+  // The function to handle form field changes.
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  // The function to handle state selection changes.
+  const handleStateChange = (e) => {
+    setFormData({ ...formData, state: e.name })
+  }
+
+  // The function to handle department selection changes.
+  const handleDepartmentChange = (e) => {
+    setFormData({ ...formData, department: e.value })
+  }
+
+  // The function to handle date of birth changes
+  const handleDateChange = (date) => {
+    setFormData({ ...formData, dateofbirth: date })
+  }
+
+  // The function to handle start date changes.
+  const handleStartDateChange = (date) => {
+    setFormData({ ...formData, startDate: date })
+  }
+
+  // The function to add mock data.
+  function addMock(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    dispatch(addEmployee(mockData))
+    dispatch(handleOpenModal)
+  }
+
+  // The function to handle form submission and employee addition.
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const data = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      dateofbirth: formData.dateofbirth.toLocaleDateString('fr-FR'),
+      startDate: formData.startDate.toLocaleDateString('fr-FR'),
+      street: formData.street,
+      city: formData.city,
+      state: formData.state,
+      zipCode: formData.zipCode,
+      department: formData.department,
+    }
+    //It will add the employee
+    dispatch(addEmployee(data))
+    //It will open the modal
+    dispatch(handleOpenModal)
+  }
+
+  return (
+    &lt;form onSubmit={handleSubmit}>
+      &lt;div>
+        &lt;label htmlFor="firstName">First Name:&lt;/label>
+        &lt;input
+          type="text"
+          id="firstName"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
+      &lt;/div>
+      &lt;div>
+        &lt;label htmlFor="lastName">Last Name:&lt;/label>
+        &lt;input
+          type="text"
+          id="lastName"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
+      &lt;/div>
+      &lt;div>
+        &lt;label htmlFor="dateofbirth">Date of Birth:&lt;/label>
+        &lt;DateLayoutPicker
+          name="dateofbirth"
+          selected={formData.dateofbirth}
+          onChange={handleDateChange}
+        />
+      &lt;/div>
+      &lt;div>
+        &lt;label htmlFor="startDate">Start Date:&lt;/label>
+        &lt;DateLayoutPicker
+          name="startDate"
+          selected={formData.startDate}
+          onChange={handleStartDateChange}
+        />
+      &lt;/div>
+      &lt;fieldset className="adress">
+        &lt;legend>Adress&lt;/legend>
+        &lt;div>
+          &lt;label htmlFor="street">Street:&lt;/label>
+          &lt;input
+            type="text"
+            id="street"
+            name="street"
+            value={formData.street}
+            onChange={handleChange}
+            required
+          />
+        &lt;/div>
+        &lt;div>
+          &lt;label htmlFor="city">City:&lt;/label>
+          &lt;input
+            type="text"
+            id="city"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            required
+          />
+        &lt;/div>
+        &lt;div>
+          &lt;label htmlFor="state">State:&lt;/label>
+          &lt;SlideMenu
+            fields={states}
+            handleChange={handleStateChange}
+            valueName={'abbreviation'}
+            labelName={'name'}
+          >&lt;/SlideMenu>
+        &lt;/div>
+        &lt;div>
+          &lt;label htmlFor="zipCode">Zip Code:&lt;/label>
+          &lt;input
+            type="text"
+            id="zipCode"
+            name="zipCode"
+            value={formData.zipCode}
+            onChange={handleChange}
+            required
+          />
+        &lt;/div>
+      &lt;/fieldset>
+      &lt;div>
+        &lt;label htmlFor="department">Department:&lt;/label>
+        &lt;SlideMenu
+          fields={departments}
+          handleChange={handleDepartmentChange}
+          valueName={'value'}
+          labelName={'label'}
+        >&lt;/SlideMenu>
+      &lt;/div>
+      &lt;button className="save-button" type="submit">
+        Save
+      &lt;/button>
+      &lt;button className="add-mock" onClick={(e) => addMock(e)}>
+        Add mock data
+      &lt;/button>
+      &lt;CustomModal
+        isOpen={modalIsOpen}
+        onClose={handleCloseModal}
+        content={&lt;p>L'employée a été ajouté !&lt;/p>}
+      />
+    &lt;/form>
+  )
+}
+
+export default Form
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#store">store</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 27 2023 16:41:55 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

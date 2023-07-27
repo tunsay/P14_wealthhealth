@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Table/Table.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Table/Table.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import {
+  useTable,
+  useSortBy,
+  useFilters,
+  useGlobalFilter,
+  useAsyncDebounce,
+} from 'react-table'
+/** styles */
+import './table.module.scss'
+import 'react-datepicker/dist/react-datepicker.css'
+
+/**
+ * GlobalFilter component renders a search input for global filtering of the data table.
+ *
+ * @typedef {Object} Props
+ * @property {number} preGlobalFilteredRows - The number of rows before global filtering.
+ * @property {string} globalFilter - The current value of the global filter.
+ * @property {function} setGlobalFilter - The function to set the value for global filtering.
+ *
+ * @param {Props} props - The object containing the component props.
+ * @returns {JSX.Element} The JSX element containing the search input for global filtering.
+ */
+function GlobalFilter({
+  preGlobalFilteredRows,
+  globalFilter,
+  setGlobalFilter,
+}) {
+  const count = preGlobalFilteredRows.length
+  const [value, setValue] = React.useState(globalFilter)
+  const onChange = useAsyncDebounce((value) => {
+    setGlobalFilter(value || undefined)
+  }, 200)
+
+  return (
+    &lt;span>
+      Search:{' '}
+      &lt;input
+        value={value || ''}
+        onChange={(e) => {
+          setValue(e.target.value)
+          onChange(e.target.value)
+        }}
+        placeholder={`${count} records...`}
+        style={{
+          fontSize: '1.1rem',
+          border: '0',
+        }}
+      />
+    &lt;/span>
+  )
+}
+
+/**
+ * DefaultColumnFilter component renders a search input for filtering data in a specific column.
+ *
+ * @typedef {Object} Column
+ * @property {any} filterValue - The current value of the filter for the specific column.
+ * @property {Array} preFilteredRows - An array of rows before column-specific filtering.
+ * @property {function} setFilter - The function to set the filter value for the specific column.
+ *
+ * @typedef {Object} Props
+ * @property {Column} column - An object containing information about the specific column.
+ *
+ * @param {Props} props - The object containing the component props.
+ * @returns {JSX.Element} The JSX element containing the search input for column-specific filtering.
+ */
+function DefaultColumnFilter({
+  column: { filterValue, preFilteredRows, setFilter },
+}) {
+  const count = preFilteredRows.length
+
+  return (
+    &lt;input
+      value={filterValue || ''}
+      onChange={(e) => {
+        setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
+      }}
+      placeholder={`Search ${count} records...`}
+    />
+  )
+}
+
+export default function Table({ columns, data }) {
+  const defaultColumn = React.useMemo(
+    () => ({
+      // Let's set up our default Filter UI
+      Filter: DefaultColumnFilter,
+    }),
+    []
+  )
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    state,
+    visibleColumns,
+    preGlobalFilteredRows,
+    setGlobalFilter,
+  } = useTable(
+    {
+      columns,
+      data,
+      defaultColumn, // Be sure to pass the defaultColumn option
+    },
+    useFilters,
+    useGlobalFilter,
+    useSortBy
+  )
+
+  return (
+    &lt;div>
+      &lt;table {...getTableProps()} style={{ border: 'solid 1px black' }}>
+        &lt;thead>
+          {headerGroups.map((headerGroup) => (
+            &lt;tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                &lt;th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render('Header')}
+                  &lt;span>
+                    {column.isSorted ? (column.isSortedDesc ? '🔽' : '🔼') : ''}
+                  &lt;/span>
+                  &lt;div>{column.canFilter ? column.render('Filter') : null}&lt;/div>
+                &lt;/th>
+              ))}
+            &lt;/tr>
+          ))}
+          &lt;tr>
+            &lt;th
+              colSpan={visibleColumns.length}
+              style={{
+                textAlign: 'left',
+              }}
+            >
+              &lt;GlobalFilter
+                preGlobalFilteredRows={preGlobalFilteredRows}
+                globalFilter={state.globalFilter}
+                setGlobalFilter={setGlobalFilter}
+              />
+            &lt;/th>
+          &lt;/tr>
+        &lt;/thead>
+        &lt;tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row)
+            return (
+              &lt;tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    &lt;td
+                      {...cell.getCellProps()}
+                      style={{
+                        padding: '10px',
+                        border: 'solid 1px gray',
+                      }}
+                    >
+                      {cell.render('Cell')}
+                    &lt;/td>
+                  )
+                })}
+              &lt;/tr>
+            )
+          })}
+        &lt;/tbody>
+      &lt;/table>
+    &lt;/div>
+  )
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#store">store</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 27 2023 16:41:55 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
