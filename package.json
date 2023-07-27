@@ -20,7 +20,7 @@
     "react-table": "^7.8.0",
     "redux-form": "^8.3.10",
     "sass": "^1.64.1",
-    "tunsay-datepicker-package": "^1.0.3",
+    "tunsay-datepicker-package": "^1.0.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
