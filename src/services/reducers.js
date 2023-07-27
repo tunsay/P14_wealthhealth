@@ -47,12 +47,6 @@ export const userSlice = createSlice({
   },
   // Reducer functions to handle actions and update the state
   reducers: {
-    /**
-     * Redux action to add an employee to the list of employees.
-     *
-     * @param {UserState} state - The current state of the 'user' slice.
-     * @param {AddEmployeeAction} action - The action object containing the employee data to be added.
-     */
     addEmployee: (state, action) => {
       // Push the new employee data to the 'employees' array in the state
       state.employees.push(action.payload)

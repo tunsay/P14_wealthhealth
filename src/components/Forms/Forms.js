@@ -1,14 +1,17 @@
+//import React component
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-// import { useSelector } from 'react-redux'
+
 import departments from '../../data/departmentList'
 import states from '../../data/statesList'
 import { addEmployee } from '../../services/reducers'
 import SlideMenu from '../SlideMenu/SlideMenu'
 import CustomModal from '../Modal/Modal'
+//Import my own Package component
 import { DateLayoutPicker } from 'tunsay-datepicker-package'
 
-// import mockData from '../../_mock/mock'
+//Import the mock data
+import mockData from '../../_mock/mock'
 
 /**
  * Form component renders a form to add a new employee.
@@ -37,6 +40,7 @@ import { DateLayoutPicker } from 'tunsay-datepicker-package'
  * @property {function} handleDateChange - The function to handle date of birth changes.
  * @property {function} handleStartDateChange - The function to handle start date changes.
  * @property {function} handleSubmit - The function to handle form submission and employee addition.
+ * @property {function} addMock - The function to add mock data.
  *
  * @returns {JSX.Element} The JSX element containing the form to add a new employee.
  */
@@ -54,44 +58,53 @@ export const Form = () => {
     department: '',
   })
 
-  //modal parameter
+  //The state of the modal for success message and other function to update the modal state.
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
+  // The function to open the success message modal.
   const handleOpenModal = () => {
     setModalIsOpen(true)
   }
 
+  // The function to close the success message modal.
   const handleCloseModal = () => {
     setModalIsOpen(false)
   }
 
-  // useEffect(() => {
-  //   dispatch(addEmployee(mockData))
-  // }, [dispatch])
-
-  // const { employees } = useSelector((state) => state.user)
-  // console.log(employees)
-
+  // The function to handle form field changes.
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  // The function to handle state selection changes.
   const handleStateChange = (e) => {
     setFormData({ ...formData, state: e.name })
   }
 
+  // The function to handle department selection changes.
   const handleDepartmentChange = (e) => {
     setFormData({ ...formData, department: e.value })
   }
 
+  // The function to handle date of birth changes
   const handleDateChange = (date) => {
     setFormData({ ...formData, dateofbirth: date })
   }
 
+  // The function to handle start date changes.
   const handleStartDateChange = (date) => {
     setFormData({ ...formData, startDate: date })
   }
 
+  // The function to add mock data.
+  function addMock(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    dispatch(addEmployee(mockData))
+    dispatch(handleOpenModal)
+  }
+
+  // The function to handle form submission and employee addition.
   const handleSubmit = (e) => {
     e.preventDefault()
     const data = {
@@ -145,11 +158,6 @@ export const Form = () => {
       </div>
       <div>
         <label htmlFor="startDate">Start Date:</label>
-        {/* <DateLayoutPicker
-          name="startDate"
-          selected={formData.startDate}
-          onChange={handleStartDateChange}
-        /> */}
         <DateLayoutPicker
           name="startDate"
           selected={formData.startDate}
@@ -182,13 +190,6 @@ export const Form = () => {
         </div>
         <div>
           <label htmlFor="state">State:</label>
-          {/* <Select
-            getOptionLabel={(option) => option.name}
-            getOptionValue={(option) => option.abbreviation}
-            options={states}
-            // defaultValue={states[0]}
-            onChange={handleStateChange}
-          /> */}
           <SlideMenu
             fields={states}
             handleChange={handleStateChange}
@@ -219,6 +220,9 @@ export const Form = () => {
       </div>
       <button className="save-button" type="submit">
         Save
+      </button>
+      <button className="add-mock" onClick={(e) => addMock(e)}>
+        Add mock data
       </button>
       <CustomModal
         isOpen={modalIsOpen}
