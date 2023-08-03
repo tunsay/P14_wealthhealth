@@ -98,6 +98,68 @@
 
         
             
+<h4 class="name" id="Form"><span class="type-signature">(constant) </span>Form<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Form component for employee data entry and submission.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Forms_Forms.js.html">components/Forms/Forms.js</a>, <a href="components_Forms_Forms.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
 <h4 class="name" id="store"><span class="type-signature">(constant) </span>store<span class="type-signature"></span></h4>
 
 
@@ -142,7 +204,69 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_reducers.js.html">services/reducers.js</a>, <a href="services_reducers.js.html#line64">line 64</a>
+        <a href="services_store.js.html">services/store.js</a>, <a href="services_store.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="userSlice"><span class="type-signature">(constant) </span>userSlice<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Redux slice for managing the 'user' state, including the list of employees.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="features_userSlice.js.html">features/userSlice.js</a>, <a href="features_userSlice.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -613,1054 +737,6 @@
 
             
                 
-<h4 class="name" id="FormData">FormData</h4>
-
-
-
-
-<div class="description">
-    Form component renders a form to add a new employee.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>firstName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The first name of the employee.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>lastName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The last name of the employee.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dateofbirth</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-|
-
-<span class="param-type">null</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The date of birth of the employee.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>startDate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-|
-
-<span class="param-type">null</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The start date of employment for the employee.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>street</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The street address of the employee.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>city</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The city where the employee lives.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>state</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The state where the employee lives (selected using a custom 'SlideMenu' component).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>zipCode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The ZIP code of the employee's address.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>department</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The department where the employee belongs (selected using a custom 'SlideMenu' component).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>formData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#FormData">FormData</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The object containing the form data state.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>setFormData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to update the form data state.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>modalIsOpen</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The state of the modal for success message display.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>setModalIsOpen</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to update the modal state.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handleOpenModal</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to open the success message modal.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handleCloseModal</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to close the success message modal.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>employees</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The array containing the list of employees from the Redux store.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handleChange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to handle form field changes.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handleStateChange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to handle state selection changes.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handleDepartmentChange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to handle department selection changes.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handleDateChange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to handle date of birth changes.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handleStartDateChange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to handle start date changes.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handleSubmit</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to handle form submission and employee addition.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>addMock</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to add mock data.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Forms_Forms.js.html">components/Forms/Forms.js</a>, <a href="components_Forms_Forms.js.html#line16">line 16</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="Option">Option</h4>
-
-
-
-
-<div class="description">
-    SlideMenu component renders a custom select menu (dropdown) with options provided in the 'fields' array.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The value associated with the option.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>label</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The label or display text for the option.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>fields</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="global.html#Option">Option</a>></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">An array of option objects representing the selectable options in the menu.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>handleChange</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The callback function to handle the selection change.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>valueName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The name of the property in the option object representing the option value.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>labelName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The name of the property in the option object representing the option label.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_SlideMenu_SlideMenu.js.html">components/SlideMenu/SlideMenu.js</a>, <a href="components_SlideMenu_SlideMenu.js.html#line3">line 3</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="Props">Props</h4>
-
-
-
-
-<div class="description">
-    CustomModal component displays a modal dialog with custom content.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>isOpen</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">A boolean value indicating whether the modal is open or closed.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>onClose</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to close the modal when the close button is clicked.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>content</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">JSX.Element</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The JSX element representing the content to be displayed in the modal.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Modal_Modal.js.html">components/Modal/Modal.js</a>, <a href="components_Modal_Modal.js.html#line4">line 4</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-            
-                
 <h4 class="name" id="Props">Props</h4>
 
 
@@ -2023,383 +1099,6 @@
 
 
             
-                
-<h4 class="name" id="ReduxExports">ReduxExports</h4>
-
-
-
-
-<div class="description">
-    Redux slice for managing the 'user' state, including the list of employees.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>employees</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">An array containing the list of employees.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>payload</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The data representing the employee to be added.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The name of the Redux slice.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>initialState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">UserState</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The initial state for the reducer.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>reducers</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">An object containing reducer functions to update the state.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>addEmployee</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The action function to add an employee to the list.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>user</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The Redux reducer function for the 'user' slice.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>reducer</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">ReduxStore</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The object containing all the reducers for the store.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>getState</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to get the current state from the store.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dispatch</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The function to dispatch actions to update the state.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>store</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">StoreInstance</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The instance of the Redux store.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>actions</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">ReduxActions</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The object containing all the actions exported from the slice.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_reducers.js.html">services/reducers.js</a>, <a href="services_reducers.js.html#line4">line 4</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-            
     
 
     
@@ -2413,13 +1112,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#store">store</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#Form">Form</a></li><li><a href="global.html#store">store</a></li><li><a href="global.html#userSlice">userSlice</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 27 2023 16:41:55 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Aug 03 2023 04:59:02 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

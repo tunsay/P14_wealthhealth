@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/CreateEmployee/CreateEmployee.js</title>
+    <title>JSDoc: Source: features/userSlice.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/CreateEmployee/CreateEmployee.js</h1>
+    <h1 class="page-title">Source: features/userSlice.js</h1>
 
     
 
@@ -26,28 +26,34 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { Link } from 'react-router-dom'
-import Form from '../Forms/Forms'
+            <pre class="prettyprint source linenums"><code>import { createSlice } from '@reduxjs/toolkit'
 
 /**
- * CreateEmployee component renders a form to create a new employee.
+ * Redux slice for managing the 'user' state, including the list of employees.
  *
- * @returns {JSX.Element} The JSX element containing the form to create an employee.
+ * @param {Object} state - The current state managed by the 'user' slice.
+ * @param {Object} action - The action dispatched to update the state.
+ *
  */
-export function CreateEmployee() {
-  return (
-    &lt;span>
-      &lt;div className="title">
-        &lt;h1>HRnet&lt;/h1>
-      &lt;/div>
-      &lt;div className="container">
-        &lt;Link to={'/list'}>View Current Employees&lt;/Link>
-        &lt;h2>Create Employee&lt;/h2>
-        &lt;Form />
-      &lt;/div>
-    &lt;/span>
-  )
-}
+export const userSlice = createSlice({
+  // The name of the Redux slice
+  name: 'user',
+  // The initial state for the reducer
+  initialState: {
+    employees: [], // Initialize the 'employees' array as an empty array
+  },
+  // Reducer functions to handle actions and update the state
+  reducers: {
+    addEmployee: (state, action) => {
+      // Push the new employee data to the 'employees' array in the state
+      state.employees.push(action.payload)
+    },
+  },
+})
+// Export the 'addEmployee' action function from the Redux slice
+export const { addEmployee } = userSlice.actions
+
+export default userSlice.reducer
 </code></pre>
         </article>
     </section>
