@@ -23,6 +23,8 @@ import Table from '../Table/Table'
  */
 export function ListEmployee() {
   const { employees } = useSelector((state) => state.user)
+  const test = useSelector((state) => state)
+  console.log(test)
 
   const columns = useMemo(
     () => [

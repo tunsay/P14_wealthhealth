@@ -7,7 +7,7 @@ import {
   useAsyncDebounce,
 } from 'react-table'
 /** styles */
-import './table.module.scss'
+import './Table.scss'
 import 'react-datepicker/dist/react-datepicker.css'
 
 /**

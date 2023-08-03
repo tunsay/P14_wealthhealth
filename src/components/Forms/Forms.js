@@ -1,51 +1,30 @@
 //import React component
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import Select from 'react-select'
+import DatePicker from 'react-datepicker'
 
+//Import datas
 import departments from '../../data/departmentList'
 import states from '../../data/statesList'
-import { addEmployee } from '../../services/reducers'
-import SlideMenu from '../SlideMenu/SlideMenu'
-import CustomModal from '../Modal/Modal'
+import { addEmployee } from '../../features/userSlice'
+
 //Import my own Package component
-import { DateLayoutPicker } from 'tunsay-datepicker-package'
+import { ModalComponent } from 'tunsay-modal'
+import 'tunsay-modal/dist/index.css'
 
 //Import the mock data
 import mockData from '../../_mock/mock'
 
 /**
- * Form component renders a form to add a new employee.
+ * Form component for employee data entry and submission.
  *
- * @typedef {Object} FormData
- * @property {string} firstName - The first name of the employee.
- * @property {string} lastName - The last name of the employee.
- * @property {Date | null} dateofbirth - The date of birth of the employee.
- * @property {Date | null} startDate - The start date of employment for the employee.
- * @property {string} street - The street address of the employee.
- * @property {string} city - The city where the employee lives.
- * @property {string} state - The state where the employee lives (selected using a custom 'SlideMenu' component).
- * @property {string} zipCode - The ZIP code of the employee's address.
- * @property {string} department - The department where the employee belongs (selected using a custom 'SlideMenu' component).
- *
- * @property {FormData} formData - The object containing the form data state.
- * @property {function} setFormData - The function to update the form data state.
- * @property {boolean} modalIsOpen - The state of the modal for success message display.
- * @property {function} setModalIsOpen - The function to update the modal state.
- * @property {function} handleOpenModal - The function to open the success message modal.
- * @property {function} handleCloseModal - The function to close the success message modal.
- * @property {Array} employees - The array containing the list of employees from the Redux store.
- * @property {function} handleChange - The function to handle form field changes.
- * @property {function} handleStateChange - The function to handle state selection changes.
- * @property {function} handleDepartmentChange - The function to handle department selection changes.
- * @property {function} handleDateChange - The function to handle date of birth changes.
- * @property {function} handleStartDateChange - The function to handle start date changes.
- * @property {function} handleSubmit - The function to handle form submission and employee addition.
- * @property {function} addMock - The function to add mock data.
- *
- * @returns {JSX.Element} The JSX element containing the form to add a new employee.
+ * @returns {JSX.Element} The JSX element containing the form for employee data entry.
  */
 export const Form = () => {
+  // Redux dispatch hook
   const dispatch = useDispatch()
+  // State for form data
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -59,16 +38,16 @@ export const Form = () => {
   })
 
   //The state of the modal for success message and other function to update the modal state.
-  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [show, setShow] = useState(false)
 
-  // The function to open the success message modal.
+  // Function to open the modal.
   const handleOpenModal = () => {
-    setModalIsOpen(true)
+    setShow(true)
   }
 
-  // The function to close the success message modal.
+  // Function to close the modal.
   const handleCloseModal = () => {
-    setModalIsOpen(false)
+    setShow(false)
   }
 
   // The function to handle form field changes.
@@ -101,7 +80,7 @@ export const Form = () => {
     e.preventDefault()
     e.stopPropagation()
     dispatch(addEmployee(mockData))
-    dispatch(handleOpenModal)
+    handleOpenModal()
   }
 
   // The function to handle form submission and employee addition.
@@ -118,10 +97,10 @@ export const Form = () => {
       zipCode: formData.zipCode,
       department: formData.department,
     }
-    //It will add the employee
+    // Dispatching the 'addEmployee' action with employee data
     dispatch(addEmployee(data))
-    //It will open the modal
-    dispatch(handleOpenModal)
+    // Opening the modal after successful form submission.
+    handleOpenModal()
   }
 
   return (
@@ -150,18 +129,22 @@ export const Form = () => {
       </div>
       <div>
         <label htmlFor="dateofbirth">Date of Birth:</label>
-        <DateLayoutPicker
-          name="dateofbirth"
+        <DatePicker
+          id={'dateofbirth'}
+          name={'dateofbirth'}
           selected={formData.dateofbirth}
           onChange={handleDateChange}
+          required
         />
       </div>
       <div>
         <label htmlFor="startDate">Start Date:</label>
-        <DateLayoutPicker
-          name="startDate"
+        <DatePicker
+          id={'startDate'}
+          name={'startDate'}
           selected={formData.startDate}
           onChange={handleStartDateChange}
+          required
         />
       </div>
       <fieldset className="adress">
@@ -190,12 +173,13 @@ export const Form = () => {
         </div>
         <div>
           <label htmlFor="state">State:</label>
-          <SlideMenu
-            fields={states}
-            handleChange={handleStateChange}
-            valueName={'abbreviation'}
-            labelName={'name'}
-          ></SlideMenu>
+          <Select
+            getOptionLabel={(option) => option.name}
+            getOptionValue={(option) => option.abbreviation}
+            options={states}
+            onChange={handleStateChange}
+            required
+          />
         </div>
         <div>
           <label htmlFor="zipCode">Zip Code:</label>
@@ -211,12 +195,11 @@ export const Form = () => {
       </fieldset>
       <div>
         <label htmlFor="department">Department:</label>
-        <SlideMenu
-          fields={departments}
-          handleChange={handleDepartmentChange}
-          valueName={'value'}
-          labelName={'label'}
-        ></SlideMenu>
+        <Select
+          options={departments}
+          onChange={handleDepartmentChange}
+          required
+        />
       </div>
       <button className="save-button" type="submit">
         Save
@@ -224,10 +207,10 @@ export const Form = () => {
       <button className="add-mock" onClick={(e) => addMock(e)}>
         Add mock data
       </button>
-      <CustomModal
-        isOpen={modalIsOpen}
+      <ModalComponent
+        isOpen={show}
         onClose={handleCloseModal}
-        content={<p>L'employée a été ajouté !</p>}
+        content="L'employé a été ajouté."
       />
     </form>
   )
