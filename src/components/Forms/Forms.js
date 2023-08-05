@@ -10,11 +10,11 @@ import states from '../../data/statesList'
 import { addEmployee } from '../../features/userSlice'
 
 //Import my own Package component
-import { ModalComponent } from 'tunsay-modal'
 import 'tunsay-modal/dist/index.css'
 
 //Import the mock data
 import mockData from '../../_mock/mock'
+import { ModalComponent } from 'tunsay-modal'
 
 /**
  * Form component for employee data entry and submission.
